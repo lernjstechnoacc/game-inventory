@@ -1,13 +1,44 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.disassemble-congig-block{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.btn-block{
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ padding: 0;
+ border: none;
+ font: inherit;
+ color: inherit;
+ background-color: transparent;
+ filter: brightness(30%);    
+}
+.active-btn{
+  filter: brightness(100%);
+  cursor: pointer;
+ }
+
+body {
+  @apply bg-zinc-700 text-white 
+}
+.select{
+  box-shadow: 0px 0px 10px 0px rgba(188, 248, 148, 0.91);
+}
+.h2-title {
+  @apply block w-full text-center text-2xl
+}
+.small-block {
+  @apply  min-h-[250px] p-5 pt-5 w-3/5 mx-auto shadow-xl rounded-3xl bg-zinc-900
+}
+.big-block {
+  @apply max-w-sm h-full mx-auto shadow-xl rounded-3xl bg-zinc-900
+}
+.shadow-inset-md {
+  box-shadow: inset 0px 0px 14px 5px rgba(0,0,0,0.75);
 }

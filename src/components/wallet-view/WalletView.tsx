@@ -1,17 +1,16 @@
-import {useState, useEffect, FC} from 'react'
+import {useEffect, useState, FC} from 'react'
 import Wallet from '../../logic/Wallet';
 
 
 interface WalletViewProps {
     wallet: Wallet;
-    setWalletAmount: any;
-    walletAmount: number;
 }
 
-const WalletView: FC<WalletViewProps> = ({wallet, setWalletAmount, walletAmount}) => { 
-
+const WalletView: FC<WalletViewProps> = ({wallet}) => { 
+    const [walletAmount, setWalletAmount] = useState<number>(wallet.coinAmount);
     useEffect(()=>{
         setInterval(addCoinToWallet, 1000);
+        // eslint-disable-next-line
     },[])
 
 

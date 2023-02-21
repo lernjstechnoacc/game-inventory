@@ -3,7 +3,6 @@ import * as itemsCatalog from '../index';
 
 
 function ItemCreatorFactoryByName(itemName: string): Item | null {
-   console.log(itemName)
 
    switch(itemName) {
       case 'EventLoop Talisman':

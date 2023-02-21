@@ -1,6 +1,7 @@
 import {inventory} from "./config";
 import CraftPlatform from "./CraftPlatform";
 import Item from "./Item";
+import { ItemCreatorFactoryByName } from "./items/item-creator-factory";
 import InventoryObserver from "./observer/InventoryObserver";
 
 class Inventory {
@@ -25,6 +26,12 @@ class Inventory {
             this.observer.notifyAll({inventory: this, item, operationType: 'add'});
         } 
         
+    }
+    addItemByName = (itemName: string) => {
+        let item = ItemCreatorFactoryByName(itemName);
+        if (this.items.length < this._cells && item !== null) {
+            this.observer.notifyAll({inventory: this, item, operationType: 'add'});
+        } 
     }
 
     removeItem = (item: Item) => {

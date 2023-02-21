@@ -34,10 +34,10 @@ body {
   @apply block w-full text-center text-2xl
 }
 .small-block {
-  @apply  min-h-[250px] p-5 pt-5 w-3/5 mx-auto shadow-xl rounded-3xl bg-zinc-900
+  @apply  min-h-[250px] p-5 pt-5 w-[400px] mx-auto shadow-xl rounded-3xl bg-zinc-900
 }
 .big-block {
-  @apply max-w-sm h-full mx-auto shadow-xl rounded-3xl bg-zinc-900
+  @apply max-w-sm max-h-[800px] mx-auto shadow-xl rounded-3xl bg-zinc-900
 }
 .shadow-inset-md {
   box-shadow: inset 0px 0px 14px 5px rgba(0,0,0,0.75);

@@ -113,6 +113,18 @@ class AdjacencyMatrix {
         return arrayOccurrences;
     }
 
+    findAllOccurrencesEdgesInEdge = (edge: string) : string[] => {
+        let edgesNames: string[] = [];
+
+        this.matrix[this.edges[edge]].array.forEach((currentEdge, index) =>{
+            if(currentEdge){
+                edgesNames.push(this.matrix[index].name);
+            }
+        });
+
+        return edgesNames;
+    }
+
 }
 
 /*     isConvergeAllEdges = (mainEdgeIndex: number, allEdges: string) => {

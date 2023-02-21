@@ -13,8 +13,8 @@ interface ItemProps {
     onDragLeave?: (e: React.DragEvent<HTMLImageElement>) => void;
     onDrop?: (e: React.DragEvent<HTMLImageElement>) => void;
     onClick?:(e: React.MouseEvent<HTMLImageElement>) => void;
-
 }
+
 interface PriceViewProps{
     price: number;
 }
@@ -23,10 +23,10 @@ const ItemSlot: FC<ItemProps> = ({item, price, walletAmount, selectedItemID, ...
    let isSelectItem = item.id === selectedItemID;
 
    const canBuyItemStyleCheck = ():string =>{
-     if(walletAmount && price){
-        return (walletAmount - price >= 0) ? 'border-orange-400  text-orange-400 m-1' : ''
-     }else{
-        return ''
+     if (walletAmount && price) {
+        return (walletAmount - price >= 0) ? 'border-orange-400  text-orange-400 m-1' : '';
+     } else {
+        return '';
      }
    }
 

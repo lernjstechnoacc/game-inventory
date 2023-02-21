@@ -27,8 +27,8 @@ class Wallet implements IObserver {
     get coinAmount(): number {
         return this._coinAmount;
     }
-
-    addAmount = (amount: number) => {
+    
+    addAmount = (amount: number = 1) => {
         this._coinAmount = this._coinAmount + amount;
     }
 

@@ -5,7 +5,7 @@ import Store from "./Store";
 import Wallet from "./Wallet"
 import {CreatorAllItems} from './items/item-creator-factory/index'
 
-function useBildLogic () {
+function useBuildLogic () {
     const wallet = new Wallet('Aden', 1000);
     const matrix = new AdjacencyMatrix();
 
@@ -27,4 +27,4 @@ function useBildLogic () {
 
 }
 
-export default useBildLogic;
+export default useBuildLogic;

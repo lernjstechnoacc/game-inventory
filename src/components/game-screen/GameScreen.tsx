@@ -1,6 +1,6 @@
 import { FC, useState} from 'react'
-import Item from '../../logic/Item';
-import SkeletonItem from '../../logic/items/SkeletonItem';
+import Item from '../../core/Item';
+import SkeletonItem from '../../core/items/SkeletonItem';
 
 
 import CraftPanelView from '../craft-panel-view/CraftPanelView';
@@ -8,12 +8,16 @@ import InventoryView from '../inventory-view/InventoryView';
 import StoreView from '../store-view/StoreView';
 import WalletView from '../wallet-view/WalletView';
 
-
 let skeletonItem = SkeletonItem();
 
 interface GameScreenProps {
+    //todo
     logic: any;
 }
+
+// todo advice: function GameScreen({logic}: GameScreenProps) {
+//
+// }
 
 const GameScreen: FC<GameScreenProps>  = ({logic}) => {
     const {inventory, store, wallet, craftPlatform} = logic;
@@ -32,7 +36,7 @@ const GameScreen: FC<GameScreenProps>  = ({logic}) => {
             </div>
             <div className='w-1/2 flex  items-center'>
                 <div className='big-block flex flex-col items-center py-5 justify-between'>
-                    <StoreView wallet={wallet}  setItemInfo={setItemInfo} store={store} setCurrentDropItem={setCurrentDropItem} />
+                    <StoreView wallet={wallet} setItemInfo={setItemInfo} store={store} setCurrentDropItem={setCurrentDropItem} />
                     <CraftPanelView craftPlatform={craftPlatform} craftInfoItem={itemInfo}/>
                 </div>
             </div>

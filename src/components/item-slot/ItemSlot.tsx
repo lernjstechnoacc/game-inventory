@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import Item from '../../logic/Item';
+import Item from '../../core/Item';
 
 
 interface ItemProps {
@@ -19,7 +19,7 @@ interface PriceViewProps{
     price: number;
 }
 
-const ItemSlot: FC<ItemProps> = ({item, price, walletAmount, selectedItemID, ...dragEvents}) => {
+const ItemSlot: FC<ItemProps> = ({item, price, walletAmount, selectedItemID, ...dragAndDropHandlers}) => {
    let isSelectItem = item.id === selectedItemID;
 
    const canBuyItemStyleCheck = ():string =>{
@@ -39,9 +39,9 @@ const ItemSlot: FC<ItemProps> = ({item, price, walletAmount, selectedItemID, ...
        
         <li className={styleCanBuy || styleImg} >
            <img className={`${styleBlock} w-12 h-12  ${styleSelect}`}
-           {...dragEvents}
+           {...dragAndDropHandlers}
              src={item.img} id={item.id} alt={item.name}/>
-             {price ? <PriceView price={price}/> : null}
+             {price && <PriceView price={price}/>}
         </li>
     );
 };

@@ -1,12 +1,13 @@
 import {useState} from 'react';
-import useBildLogic from '../../logic/useBildLogic';
 import GameScreen from '../game-screen/GameScreen';
 import HelloScreen from '../hello-screen/HelloScreen';
+import useBuildLogic from "../../core/useBuildLogic";
 
+//TODO think about components structure, what are the differences between a 'view'/'activity'/'page'/'section'/'screen' and a UI Component
 
 function App() {
   const [isReadHelloScreen, setIsReadHelloScreen] = useState<boolean>(false);
-  const logic = useBildLogic();
+  const logic = useBuildLogic();
   
   return (
     <div className=" max-w-7xl h-[100vh] mx-auto flex justify-center items-center">

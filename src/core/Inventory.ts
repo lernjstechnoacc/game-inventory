@@ -8,6 +8,7 @@ class Inventory {
     public items: Item[];
     public observer: InventoryObserver;
     private _cells: number;
+    //think about dependencies, CraftPlatform -> Inventory <- CraftPlatform
     private craftPlatform: CraftPlatform
 
     constructor (craftPlatform: CraftPlatform, items: Item[] = [], cells = inventory.DEFAULT_CELLS) {

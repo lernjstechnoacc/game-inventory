@@ -1,6 +1,7 @@
 import Item from '../../Item';
 import * as itemsCatalog from '../index'
 
+//naming - ItemsFactory
 function CreatorAllItems (): Item[]{
     let allITems: Item[] = [];
 

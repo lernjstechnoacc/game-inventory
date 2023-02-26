@@ -10,7 +10,7 @@ class Wallet implements IObserver {
         this._coinAmount = coinAmount
     }
 
-    onModifications = ({operationType, item}: IObserverData): void => {
+    notify = ({operationType, item}: IObserverData): void => {
         switch (operationType) {
             case 'add':
                 this.reduceAmount(item.price);
@@ -35,7 +35,21 @@ class Wallet implements IObserver {
     reduceAmount = (amount: number) => {
         this._coinAmount = this._coinAmount - amount;
     }
-    
-
 }
+
+//todo and think on a better implementation and tell Vlados
+// export class ObservableWallet extends Wallet implements IObserver {
+//     notify = ({operationType, item}: IObserverData): void => {
+//         switch (operationType) {
+//             case 'add':
+//                 this.reduceAmount(item.price);
+//                 break;
+//             case 'remove':
+//                 this.addAmount(item.price)
+//                 break;
+//         }
+//     }
+//
+// }
+
 export default Wallet;

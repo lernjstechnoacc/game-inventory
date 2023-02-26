@@ -1,9 +1,9 @@
 import Item from '../../Item';
 import * as itemsCatalog from '../index';
 
-
+//ItemCreatorFactory
 function ItemCreatorFactoryByName(itemName: string): Item | null {
-
+   ////todo think about switch alternatives
    switch(itemName) {
       case 'EventLoop Talisman':
          return itemsCatalog.EventLoopTalisman();  

@@ -1,4 +1,5 @@
 import Item from './Item'
+
 class Store {
     public items: Item[];
 

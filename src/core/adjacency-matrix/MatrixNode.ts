@@ -9,12 +9,15 @@ class MatrixNode implements IMatrixNode {
         this.array = (length) ? this.fillZero(length) : [];
     }
 
+    //todo rename fields and methods
+    //todo like initNodeArrayWithZeroValues()
+
     private fillZero(length: number){
-        let zerosAray: number[] = [];
+        let zerosArray: number[] = [];
         for (let i = 0; i < length; i++) {
-            zerosAray.push(0);
+            zerosArray.push(0);
         }
-        return zerosAray;
+        return zerosArray;
     }
 }
 export default MatrixNode

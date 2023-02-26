@@ -23,15 +23,19 @@ class Item {
         } else {
             return false;
         }
+
+        //todo return (this._configurable && this._assemblyCapability);
     }
     get assemblyCapability(): boolean {
         return this._assemblyCapability;
     }
 
+    //todo use toggle instead of change
     changeAssemblyCapability = (): void => {
         this._assemblyCapability = !this._assemblyCapability;
-        
     }
+
+
 }
 
 export default Item;

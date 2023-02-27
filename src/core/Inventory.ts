@@ -1,7 +1,7 @@
-import {inventory} from "./config";
+import {INVENTORY} from "./config";
 import CraftPlatform from "./CraftPlatform";
 import Item from "./Item";
-import { ItemCreatorFactoryByName } from "./items/item-creator-factory";
+import { ItemCreatorFactory } from "./items/item-creator-factory";
 import InventoryObserver from "./observer/InventoryObserver";
 
 class Inventory {
@@ -10,7 +10,7 @@ class Inventory {
     private _cells: number;
     private craftPlatform: CraftPlatform
 
-    constructor (craftPlatform: CraftPlatform, items: Item[] = [], cells = inventory.DEFAULT_CELLS) {
+    constructor (craftPlatform: CraftPlatform, items: Item[] = [], cells = INVENTORY.DEFAULT_CELLS) {
         this.items = items;
         this.observer = new InventoryObserver();
         this._cells = cells;
@@ -21,35 +21,35 @@ class Inventory {
         return this._cells
     }
 
-    addItem = (item: Item) => {
+    public addItem = (item: Item) => {
         if (this.items.length < this._cells) {
             this.observer.notifyAll({inventory: this, item, operationType: 'add'});
         } 
         
     }
-    addItemByName = (itemName: string) => {
-        let item = ItemCreatorFactoryByName(itemName);
+    public addItemByName = (itemName: string) => {
+        let item = ItemCreatorFactory(itemName);
         if (this.items.length < this._cells && item !== null) {
             this.observer.notifyAll({inventory: this, item, operationType: 'add'});
         } 
     }
 
-    removeItem = (item: Item) => {
+    public removeItem = (item: Item) => {
         this.observer.notifyAll({inventory: this, item, operationType: 'remove'});
     }
     
-    isDisassemblyItem = (item: Item) => {
+    public isDisassemblyItem = (item: Item) => {
       return  this.craftPlatform.isDisassemblyItem(item);
     }
 
-    disassemblyItem = (item: Item) => {
+    public disassemblyItem = (item: Item) => {
         this.craftPlatform.disassemblyItem(this, item);
     }
 
-    changeAssemblyCapability = (item: Item) => {
+    public changeAssemblyCapability = (item: Item) => {
         this.craftPlatform.changeAssemblyCapabilityItem(this, item);
     }
 
 }
 
-export default Inventory
+export default Inventory;

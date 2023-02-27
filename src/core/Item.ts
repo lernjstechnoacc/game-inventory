@@ -28,7 +28,7 @@ class Item {
         return this._assemblyCapability;
     }
 
-    changeAssemblyCapability = (): void => {
+    public changeAssemblyCapability = (): void => {
         this._assemblyCapability = !this._assemblyCapability;
         
     }

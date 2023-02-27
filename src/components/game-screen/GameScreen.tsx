@@ -1,18 +1,17 @@
-import { FC, useState} from 'react'
-import Item from '../../logic/Item';
-import SkeletonItem from '../../logic/items/SkeletonItem';
-
-
+import { FC, useState } from 'react'
+import ILogic from '../../core/interface/ILogic';
+import Item from '../../core/Item';
+import SkeletonItem from '../../core/items/SkeletonItem';
 import CraftPanelView from '../craft-panel-view/CraftPanelView';
 import InventoryView from '../inventory-view/InventoryView';
 import StoreView from '../store-view/StoreView';
 import WalletView from '../wallet-view/WalletView';
 
 
-let skeletonItem = SkeletonItem();
+let skeletonItem = new SkeletonItem();
 
 interface GameScreenProps {
-    logic: any;
+    logic: ILogic;
 }
 
 const GameScreen: FC<GameScreenProps>  = ({logic}) => {

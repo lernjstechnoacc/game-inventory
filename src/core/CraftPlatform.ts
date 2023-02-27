@@ -3,7 +3,8 @@ import IObserver from "./interface/IObserver";
 import IObserverData from "./interface/IObserverData";
 import Inventory from "./Inventory";
 import Item from "./Item";
-import { ItemCreatorFactoryByName } from "./items/item-creator-factory";
+import { ItemCreatorFactory } from "./items/item-creator-factory";
+import SkeletonItem from "./items/SkeletonItem";
 
 class CraftPlatform implements IObserver {
     private matrix: AdjacencyMatrix;
@@ -11,10 +12,10 @@ class CraftPlatform implements IObserver {
     
     constructor (matrix: AdjacencyMatrix) {
         this.matrix = matrix;
-        this.itemCreator = ItemCreatorFactoryByName;
+        this.itemCreator = ItemCreatorFactory;
     }
 
-    onModifications = ({inventory, item, operationType}: IObserverData): void  =>{
+    public onModifications = ({inventory, item, operationType}: IObserverData): void  =>{
         switch (operationType) {
             case 'add':
                 this.craftItem(inventory, item);
@@ -29,24 +30,25 @@ class CraftPlatform implements IObserver {
           }
     }
 
-    craftItem = (inventory: Inventory, item: Item) => {
+    public craftItem = (inventory: Inventory, item: Item) => {
         
         if (item.configurable) {
             let items = inventory.items.filter(item => item.configurable);
             let itemsName = items.map(item => item.name);
             inventory.items = [...inventory.items, item];
-            let newItem = this.matrix.findEdgeNameExactlyOccurrenceAllEdges(item.name, itemsName);
+            let newItem = this.matrix.findNodeNameExactlyAdjacencyToAllEdges(item.name, itemsName);
             
             if (newItem) {
                 const createdNewItem: Item = this.itemCreator(newItem);
-                const constituentsItemName = this.matrix.findAllOccurrencesInEdge(newItem);
+                const constituentsItemName = this.matrix.findNodeNamesByAdjacencyEdge(newItem);
                 const filterItems = inventory.items.filter(item => item.configurable);
 
                 constituentsItemName.forEach(itemName => {
                     let item = filterItems.find(item => item.name === itemName);
-
                     if (item !== undefined) {
+                        let indexItem = filterItems.indexOf(item);
                         inventory.removeItem(item);
+                        filterItems[indexItem] = new SkeletonItem();
                     }
                 });
                 
@@ -60,16 +62,16 @@ class CraftPlatform implements IObserver {
 
     }
 
-    isDisassemblyItem = (item: Item): boolean => {
-       return this.matrix.isEdgeHaveEdges(item.name);
+    public isDisassemblyItem = (item: Item): boolean => {
+       return this.matrix.isNodeHaveEdges(item.name);
     }
-    changeAssemblyCapabilityItem = (inventory: Inventory, item: Item) => {
+    public changeAssemblyCapabilityItem = (inventory: Inventory, item: Item) => {
         let indexItem = inventory.items.findIndex(oldItem => oldItem.id === item.id);
         let assemblyCapabilityItem = inventory.items[indexItem].assemblyCapability;
 
         let items = inventory.items.filter(item => item.configurable);
         let itemsName = items.map(item => item.name);
-        let newItem = this.matrix.findEdgeNameExactlyOccurrenceAllEdges(item.name, itemsName)
+        let newItem = this.matrix.findNodeNameExactlyAdjacencyToAllEdges(item.name, itemsName)
 
         if (assemblyCapabilityItem || !newItem) {
             inventory.items[indexItem].changeAssemblyCapability()
@@ -80,8 +82,8 @@ class CraftPlatform implements IObserver {
         }
     }
 
-    disassemblyItem = (inventory: Inventory, item: Item) => {
-        const constituentsItemName = this.matrix.findAllOccurrencesInEdge(item.name);
+    public disassemblyItem = (inventory: Inventory, item: Item) => {
+        const constituentsItemName = this.matrix.findNodeNamesByAdjacencyEdge(item.name);
         if(constituentsItemName.length > 0){
             const disassembledItems:Item[] = [];
             inventory.items = inventory.items.filter(oldItem => oldItem.id !== item.id);
@@ -97,14 +99,14 @@ class CraftPlatform implements IObserver {
         }
     }
 
-    removeItemByID = (inventory: Inventory, item: Item) => {
+    public removeItemByID = (inventory: Inventory, item: Item) => {
         inventory.items = inventory.items.filter( oldItem => oldItem.id !== item.id );
     }
 
-    getCraftListForItem = (item: Item): any => {
-       return this.matrix.findAllOccurrencesEdgesInEdge(item.name).map(itemName =>{
-            return ItemCreatorFactoryByName(itemName);
-       });
+    public getCraftListForItem = (item: Item): any => {
+       return this.matrix.findAdjacencyEdgeNamesInNode(item.name).map(itemName =>{
+            return this.itemCreator(itemName);
+       });  
     }
 
 }

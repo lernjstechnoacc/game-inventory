@@ -1,8 +1,8 @@
-const inventory = {
+const INVENTORY = {
     DEFAULT_CELLS: 6,
 }
 
-const price = {
+const PRICE = {
     ANCIENT_HAT: 400,
     CAT_STAFF: 600,
     DOM_BRANCH: 100,
@@ -11,4 +11,4 @@ const price = {
 
 }
 
-export {inventory, price} ;
+export {INVENTORY, PRICE} ;

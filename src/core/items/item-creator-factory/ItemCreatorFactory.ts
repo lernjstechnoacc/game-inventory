@@ -2,7 +2,7 @@ import Item from '../../Item';
 import * as itemsCatalog from '../index';
 
 
-function ItemCreatorFactoryByName(itemName: string): Item | null {
+function ItemCreatorFactory(itemName: string): Item | null {
 
    switch(itemName) {
       case 'EventLoop Talisman':
@@ -18,10 +18,14 @@ function ItemCreatorFactoryByName(itemName: string): Item | null {
       case 'Fabric':
          return itemsCatalog.Fabric();
       case 'Null of Enum':
-         return itemsCatalog.NullOfEnum();    
+         return itemsCatalog.NullOfEnum();
+      case 'Staff of Death':
+         return itemsCatalog.StaffOfDeath();
+      case 'Staff of Prod':
+         return itemsCatalog.StaffOfProd();    
       default:
-        return null
+        return null;
    }
      
 }
-export default ItemCreatorFactoryByName;
+export default ItemCreatorFactory;

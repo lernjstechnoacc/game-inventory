@@ -3,9 +3,9 @@ import {useState, useEffect, FC} from 'react'
 import ItemList from '../item-list/ItemList';
 import ItemSlot from '../item-slot/ItemSlot';
 
-import Item from '../../logic/Item';
-import Inventory from '../../logic/Inventory';
-import SkeletonItem from '../../logic/items/SkeletonItem';
+import Item from '../../core/Item';
+import Inventory from '../../core/Inventory';
+import SkeletonItem from '../../core/items/SkeletonItem';
 
 import SkeletonSvg from '../../assets/SkeletonItem.svg';
 import overIcon from '../../assets/overIcon.svg';
@@ -19,17 +19,17 @@ interface InventoryViewProps {
     currentDropItem: Item;
 }
 
-let skeletonItem = SkeletonItem();
+let skeletonItem = new SkeletonItem();
 
 const InventoryView: FC<InventoryViewProps> = ({currentDropItem, inventory}) => {
     const [inventoryItems, setInventoryItems] = useState<Item[]>([]);
     const [isSelectItem, setIsSelectItem] = useState<boolean>(false);
     const [selectedItem, setSelectedItem] = useState<Item>(skeletonItem);
 
-    useEffect (() => {
+/*     useEffect (() => {
         setInventoryItems(inventoryItems => [...inventoryItems, ...inventory.items]);
         // eslint-disable-next-line
-    },[]);
+    },[]); */
 
     useEffect(() =>{
         setInventoryItems([...inventory.items])
@@ -43,7 +43,7 @@ const InventoryView: FC<InventoryViewProps> = ({currentDropItem, inventory}) => 
             if (inventoryItems[i] !== undefined) { 
                 arrayRenderItems.push(inventory.items[i]);
             } else {
-                arrayRenderItems.push(SkeletonItem());
+                arrayRenderItems.push(new SkeletonItem());
             }
         }
         return arrayRenderItems;

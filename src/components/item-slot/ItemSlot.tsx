@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import Item from '../../logic/Item';
+import Item from '../../core/Item';
 
 
 interface ItemProps {

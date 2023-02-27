@@ -1,6 +1,6 @@
 interface IMatrixNode {
     name: string;
-    array: number[];
+    edges: number[];
 }
 
 export default IMatrixNode;

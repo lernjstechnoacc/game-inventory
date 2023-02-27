@@ -10,7 +10,7 @@ class Wallet implements IObserver {
         this._coinAmount = coinAmount
     }
 
-    onModifications = ({operationType, item}: IObserverData): void => {
+    public onModifications = ({operationType, item}: IObserverData): void => {
         switch (operationType) {
             case 'add':
                 this.reduceAmount(item.price);
@@ -28,11 +28,11 @@ class Wallet implements IObserver {
         return this._coinAmount;
     }
     
-    addAmount = (amount: number = 1) => {
+    public addAmount = (amount: number = 1) => {
         this._coinAmount = this._coinAmount + amount;
     }
 
-    reduceAmount = (amount: number) => {
+    public reduceAmount = (amount: number) => {
         this._coinAmount = this._coinAmount - amount;
     }
     

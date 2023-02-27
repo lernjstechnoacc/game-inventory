@@ -1,5 +1,5 @@
 import {useEffect, useState, FC} from 'react'
-import Wallet from '../../logic/Wallet';
+import Wallet from '../../core/Wallet';
 
 
 interface WalletViewProps {

@@ -1,13 +1,13 @@
 import React, { FC, useEffect, useState } from 'react';
-import Item from '../../logic/Item';
-import SkeletonItem from '../../logic/items/SkeletonItem';
-import Store from '../../logic/Store';
-import Wallet from '../../logic/Wallet';
+import Item from '../../core/Item';
+import SkeletonItem from '../../core/items/SkeletonItem';
+import Store from '../../core/Store';
+import Wallet from '../../core/Wallet';
 
 import ItemList from '../item-list/ItemList';
 import ItemSlot from '../item-slot/ItemSlot';
 
-let skeletonItem = SkeletonItem();
+let skeletonItem = new SkeletonItem();
 
 interface StoreViewProps {
     wallet: Wallet;
@@ -29,7 +29,11 @@ const StoreView: FC<StoreViewProps> = ({setCurrentDropItem, store, setItemInfo, 
 
 
     const setItemInStore = () => {
-        setStoreItems(storeItems => [...store.items]);
+        setStoreItems([...store.items]);
+    }
+    const onclickItem = (item: Item) =>{
+        setItemInfo(item);
+        setItemInStore();
     }
 
     const dragHandler = (e: React.DragEvent<HTMLImageElement>) => {
@@ -43,14 +47,9 @@ const StoreView: FC<StoreViewProps> = ({setCurrentDropItem, store, setItemInfo, 
     
         
     }
-    
-    const onClickGetInfo = (item: Item) =>{
-        setItemInfo(item);
-    }
-
 
     return (
-        <div className=''>
+        <div >
             <h2 className=' h2-title h-9 bg-gradient-to-br mb-4 from-orange-400/90 to-amber-400/90'>Store</h2>
             <div className='px-4 flex-auto'>
             <ItemList
@@ -58,7 +57,7 @@ const StoreView: FC<StoreViewProps> = ({setCurrentDropItem, store, setItemInfo, 
             renderItem={(item: Item) =>
                 <ItemSlot
                     draggable={true}
-                    onClick={()=> onClickGetInfo(item)}  
+                    onClick={()=>  onclickItem(item)}  
                     onDrag={dragHandler}
                     price = {item.price}
                     walletAmount = {wallet.coinAmount}

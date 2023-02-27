@@ -8,15 +8,15 @@ class InventoryObserver {
     this.observers = observers;
   }
 
-  subscribe(observer: IObserver) {
+  public subscribe(observer: IObserver) {
     this.observers = [...this.observers, observer];
   }
 
-  unsubscribe(observer: IObserver) {
+  public unsubscribe(observer: IObserver) {
     this.observers = this.observers.filter((subscriber: IObserver) => subscriber !== observer);
   }
 
-  notifyAll(data: IObserverData) {
+  public notifyAll(data: IObserverData) {
     this.observers.forEach((subscriber) => subscriber.onModifications(data));
   }
 

@@ -2,19 +2,19 @@ import IMatrixNode from "../interface/IMatrixNode";
 
 class MatrixNode implements IMatrixNode {
     public name: string;
-    public array: number[];
+    public edges: number[];
     
     constructor (name: string, length?: number) {
         this.name = name;
-        this.array = (length) ? this.fillZero(length) : [];
+        this.edges = (length) ? this.fillZero(length) : [0];
     }
 
     private fillZero(length: number){
-        let zerosAray: number[] = [];
+        let zerosArray: number[] = [];
         for (let i = 0; i < length; i++) {
-            zerosAray.push(0);
+            zerosArray.push(0);
         }
-        return zerosAray;
+        return zerosArray;
     }
 }
 export default MatrixNode

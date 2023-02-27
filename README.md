@@ -1,46 +1,58 @@
-# Getting Started with Create React App
+<div align="center">
+<img src="https://rishavanand.github.io/static/images/greetings.gif" align="center" style="width: 100%" />
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Game-inventory on React | TypeScript
 
-## Available Scripts
+This is a simple in-game inventory prototype where you can craft and collect items taken from the in-game store. It is possible to expand the number of items, also use one item to craft different items
 
-In the project directory, you can run:
+### Authors
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Of cource me
+- ✨And my stupid idea ✨
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Contributing
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+:tw-1f432: My inspiration and simply mega senior JavaScript engineer `VladOps`
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Install my-project with npm
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+  npm install
+ yarn start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### About structure
 
-### `npm run eject`
+The project is divided into two parts: View (components) and Core (project logic).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+:tw-1f428: **View** (`src/components`):
+A simple template is written in React, where each entity has its own component. Drag and drop functionality and CSS styles are written using Tailwind.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+:tw-1f428: **Core** (`src/components`):
+The project logic is written in classes with TypeScript type safety and is built in useBuildLogic upon project launch. The project logic is divided into the following parts:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- **Store**: a simple class that stores all existing items.
+- **Wallet**: a simple class with two fields, currency type and amount, which monitors inventory changes (adding or removing items) through an observer and changes the amount of coins based on the operation.
+- **Craft platform**: the main class for crafting, dismantling, modifying, and creating items, which through an observer monitors the inventory and attempts to craft or dismantle the required item upon adding a new item or performing other operations.
+- **Adjacent Matrix**: the main system for finding the required item for crafting and the ability to craft, which is implemented on graphs.
+- **Item Factory**: a simple factory for creating items.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Connect with me
 
-## Learn More
+<div align="center">
+<a href="https://github.com/marohovsky" target="_blank">
+<img src=https://img.shields.io/badge/github-%2324292e.svg?&style=for-the-badge&logo=github&logoColor=white alt=github style="margin-bottom: 0px;" />
+</a>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<a href="https://www.linkedin.com/in/vladimir-marohovsky-4aa763264/" target="_blank">
+<img src=https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 0px;" />
+</a>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+</div>

@@ -32,10 +32,10 @@ Install my-project with npm
 
 The project is divided into two parts: View (components) and Core (project logic).
 
-:tw-1f428: **View** (`src/components`):
+:raccoon: **View** (`src/components`):
 A simple template is written in React, where each entity has its own component. Drag and drop functionality and CSS styles are written using Tailwind.
 
-:tw-1f428: **Core** (`src/components`):
+:raccoon: **Core** (`src/components`):
 The project logic is written in classes with TypeScript type safety and is built in useBuildLogic upon project launch. The project logic is divided into the following parts:
 
 - **Store**: a simple class that stores all existing items.

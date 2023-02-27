@@ -17,7 +17,7 @@ This is a simple in-game inventory prototype where you can craft and collect ite
 
 ---
 
-:tw-1f432: My inspiration and simply mega senior JavaScript engineer `VladOps`
+:shipit: My inspiration and simply mega senior JavaScript engineer `VladOps`
 
 ## Installation
 
